@@ -1,0 +1,101 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-photo">
+      <img class="hero-photo-img" src="{{ "images/headshot.jpg" | relURL }}" alt="Haemin Jee">
+    </div>
+    <div class="hero-text">
+      <h1>Haemin Jee</h1>
+      <p class="hero-title">Assistant Professor of Political Science</p>
+      <p class="hero-institution">Swarthmore College</p>
+      <p class="hero-intro">Haemin Jee is an Assistant Professor in the Department of Political Science at Swarthmore College. Her research bridges the political economy of China with the international and domestic implications of great power competition. Before arriving at Swarthmore, she was an Assistant Professor of International Affairs in the Department of Social Sciences at the United States Military Academy at West Point. She completed her PhD in 2022 at the Department of Political Science at Stanford University. Prior to attending Stanford, she received an A.B. in Government from Harvard University.</p>
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="{{ "publication/" | relURL }}">Writings</a>
+        <a class="btn btn-secondary" href="{{ "bio/" | relURL }}">Bio & C.V.</a>
+        <a class="btn btn-secondary" href="mailto:hjee1@swarthmore.edu">Contact</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="research-areas" id="research-areas">
+  <div class="container">
+    <h2>Research Areas</h2>
+
+    <div class="ra-accordion">
+      <button class="ra-header" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+        <span>Chinese Political Economy</span>
+        <span class="ra-chevron">&#9662;</span>
+      </button>
+      <div class="ra-body">
+        <ul>
+          <li><a href="{{ "publication/bureaucratic-incentives/" | relURL }}">Bureaucratic Incentives and Government Responsiveness in China</a> — <em>Governance</em>, 2026</li>
+          <li><a href="{{ "publication/patronage-responsiveness/" | relURL }}">How Patronage Communicates: Information Campaigns and Government Responsiveness in China</a> — Conditional Acceptance, <em>PSRM</em></li>
+          <li><a href="{{ "publication/social-credit-system/" | relURL }}">The Social Credit System as a Law-Enforcing Tool</a> — Book Chapter, 2025</li>
+          <li><a href="{{ "publication/credit-for-compliance/" | relURL }}">Credit for Compliance</a> — Book Project</li>
+        </ul>
+        <a class="ra-viewall" href="{{ "publication/" | relURL }}">View all &rarr;</a>
+      </div>
+    </div>
+
+    <div class="ra-accordion">
+      <button class="ra-header" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+        <span>Authoritarianism & Democratic Backsliding</span>
+        <span class="ra-chevron">&#9662;</span>
+      </button>
+      <div class="ra-body">
+        <ul>
+          <li><a href="{{ "publication/non-democratic-critics/" | relURL }}">Oppose Autocracy without Support for Democracy</a> — <em>Perspectives on Politics</em>, 2025</li>
+          <li><a href="{{ "publication/democratic-backsliding/" | relURL }}">Towards a Unified Approach to Research on Democratic Backsliding</a> — <em>Democratization</em>, 2022</li>
+          <li><a href="{{ "publication/xi-grip-power/" | relURL }}">Xi's Grip on Power is Now China's Biggest Domestic Challenge</a> — <em>World Politics Review</em>, 2022</li>
+        </ul>
+        <a class="ra-viewall" href="{{ "publication/" | relURL }}">View all &rarr;</a>
+      </div>
+    </div>
+
+    <div class="ra-accordion">
+      <button class="ra-header" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+        <span>Threat Perception, Alliances & Great Power Competition</span>
+        <span class="ra-chevron">&#9662;</span>
+      </button>
+      <div class="ra-body">
+        <ul>
+          <li><a href="{{ "publication/external-threats/" | relURL }}">External Threats and Support for International Security Cooperation</a> — Under Review</li>
+          <li><a href="{{ "publication/european-strategies/" | relURL }}">European Strategies in the Shadow of Sino-American Competition</a> — Working Paper</li>
+          <li><a href="{{ "publication/strategic-alignment/" | relURL }}">Strategic Alignment, Alliances, and Behavior in International Organizations</a> — Working Paper</li>
+        </ul>
+        <a class="ra-viewall" href="{{ "publication/" | relURL }}">View all &rarr;</a>
+      </div>
+    </div>
+
+    <div class="ra-accordion">
+      <button class="ra-header" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+        <span>Asian American Political Behavior</span>
+        <span class="ra-chevron">&#9662;</span>
+      </button>
+      <div class="ra-body">
+        <ul>
+          <li><a href="{{ "publication/anti-china-rhetoric-identity/" | relURL }}">Anti-China Rhetoric and Asian American Identity</a> — Under Review</li>
+          <li><a href="{{ "publication/anti-china-rhetoric-candidate/" | relURL }}">Anti-China Rhetoric Reduces Candidate Support for Most Asian American Voters</a> — Under Review</li>
+        </ul>
+        <a class="ra-viewall" href="{{ "publication/" | relURL }}">View all &rarr;</a>
+      </div>
+    </div>
+
+    <div class="ra-accordion">
+      <button class="ra-header" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+        <span>Text as Data</span>
+        <span class="ra-chevron">&#9662;</span>
+      </button>
+      <div class="ra-body">
+        <ul>
+          <li><a href="{{ "publication/talking-tough/" | relURL }}">Talking Tough, Talking Soft: How China Tailors Rhetoric by Audience</a> — Work in Progress</li>
+          <li><a href="{{ "publication/european-strategies/" | relURL }}">European Strategies in the Shadow of Sino-American Competition: A Text-as-Data Approach</a> — Working Paper</li>
+        </ul>
+        <a class="ra-viewall" href="{{ "publication/" | relURL }}">View all &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,84 @@
+{{ define "main" }}
+<section class="writings-page">
+  <div class="container">
+    <h1>Writings</h1>
+
+    <div class="tab-strip">
+      <button class="tab-btn active" data-tab="all">All</button>
+      <button class="tab-btn" data-tab="articles">Articles</button>
+      <button class="tab-btn" data-tab="book">Books</button>
+      <button class="tab-btn" data-tab="chapters">Chapters</button>
+      <button class="tab-btn" data-tab="other">Working Papers & Other</button>
+    </div>
+
+    <p class="result-count"><span id="count">{{ len (where .Site.RegularPages "Section" "publication") }}</span> of {{ len (where .Site.RegularPages "Section" "publication") }} results</p>
+
+    <div class="pub-list">
+      {{- $allPubs := (where .Site.RegularPages "Section" "publication") -}}
+      {{- $published := where $allPubs ".Params.status" "ne" "unpublished" -}}
+      {{- $unpublished := where $allPubs ".Params.status" "unpublished" -}}
+      {{- $sorted := union ($published.ByDate.Reverse) ($unpublished.ByDate.Reverse) -}}
+      {{ range $sorted }}
+      {{ $types := .Params.publication_types | default (slice "") }}
+      {{ $tab := "other" }}
+      {{ range $types }}
+        {{ if eq . "journal_article" }}{{ $tab = "articles" }}{{ end }}
+        {{ if eq . "book" }}{{ $tab = "book" }}{{ end }}
+        {{ if eq . "book_chapter" }}{{ $tab = "chapters" }}{{ end }}
+      {{ end }}
+      {{ $isUnpublished := eq (.Params.status | default "") "unpublished" }}
+      <article class="pub-item" data-tab="{{ $tab }}" data-year="{{ .Date.Format "2006" }}">
+        <a class="pub-item-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <div class="pub-item-meta">
+          <span class="pub-item-authors">{{ delimit .Params.authors ", " }}</span>.
+          {{ with .Params.publication }}<span class="pub-item-venue">{{ . | markdownify }}</span>.{{ end }}
+          {{ if not $isUnpublished }}<span class="pub-item-year">{{ .Date.Format "2006" }}</span>.{{ end }}
+        </div>
+        {{ with .Params.links }}
+        <div class="pub-item-links">
+          {{ range . }}
+          <a class="pub-link" href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
+          {{ end }}
+        </div>
+        {{ end }}
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var tabs = document.querySelectorAll('.tab-btn');
+  var items = document.querySelectorAll('.pub-item');
+  var countEl = document.getElementById('count');
+  var total = items.length;
+
+  function filterByTab(tab) {
+    var visible = 0;
+    items.forEach(function(item) {
+      if (tab === 'all' || item.getAttribute('data-tab') === tab) {
+        item.style.display = '';
+        visible++;
+      } else {
+        item.style.display = 'none';
+      }
+    });
+    countEl.textContent = visible;
+    tabs.forEach(function(t) {
+      t.classList.toggle('active', t.getAttribute('data-tab') === tab);
+    });
+    location.hash = tab === 'all' ? '' : tab;
+  }
+
+  tabs.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      filterByTab(this.getAttribute('data-tab'));
+    });
+  });
+
+  var hash = location.hash.replace('#', '');
+  if (hash) filterByTab(hash);
+})();
+</script>
+{{ end }}

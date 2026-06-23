@@ -1,0 +1,13 @@
+<header class="navbar">
+  <div class="navbar-inner">
+    <a class="navbar-brand" href="{{ "" | relURL }}/">HAEMIN JEE</a>
+    <button class="navbar-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.navbar-menu').classList.toggle('open')">
+      <span class="hamburger"></span>
+    </button>
+    <nav class="navbar-menu">
+      {{ range .Site.Menus.main }}
+      <a class="navbar-link" href="{{ .URL | relURL }}">{{ .Name }}</a>
+      {{ end }}
+    </nav>
+  </div>
+</header>

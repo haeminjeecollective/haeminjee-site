@@ -1,0 +1,30 @@
+{{ define "main" }}
+<article class="page-single pub-detail">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+    <div class="pub-meta">
+      <span class="pub-authors">{{ delimit .Params.authors ", " }}</span>
+      <span class="pub-year">{{ .Date.Format "2006" }}</span>
+    </div>
+    {{ with .Params.publication }}
+    <p class="pub-venue">{{ . | markdownify }}</p>
+    {{ end }}
+    {{ with .Params.abstract }}
+    <div class="pub-abstract">
+      <h2>Abstract</h2>
+      <p>{{ . }}</p>
+    </div>
+    {{ end }}
+    {{ with .Params.links }}
+    <div class="pub-links">
+      {{ range . }}
+      <a class="btn btn-primary" href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
+      {{ end }}
+    </div>
+    {{ end }}
+    <div class="prose">
+      {{ .Content }}
+    </div>
+  </div>
+</article>
+{{ end }}

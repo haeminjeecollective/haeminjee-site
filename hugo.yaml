@@ -1,0 +1,34 @@
+baseURL: "/"
+title: "Haemin Jee"
+locale: en-us
+
+outputs:
+  home: [HTML, RSS]
+
+params:
+  description: "Haemin Jee — Assistant Professor of Political Science, Swarthmore College"
+
+taxonomies:
+  tag: tags
+
+
+menu:
+  main:
+    - name: Bio & C.V.
+      url: /bio/
+      weight: 10
+    - name: Book Project
+      url: /book-project/
+      weight: 15
+    - name: Writings
+      url: /publication/
+      weight: 20
+    - name: Research Areas
+      url: "/#research-areas"
+      weight: 30
+    - name: Teaching
+      url: /teaching/
+      weight: 40
+    - name: Contact
+      url: /contact/
+      weight: 50

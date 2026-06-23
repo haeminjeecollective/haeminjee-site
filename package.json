@@ -1,0 +1,7 @@
+{
+  "name": "haeminjee-site",
+  "version": "1.0.0",
+  "devDependencies": {
+    "pagefind": "^1.5"
+  }
+}
