@@ -38,4 +38,4 @@ Her peer-reviewed work has appeared in *Governance*, *Perspectives on Politics*,
 
 ## C.V.
 
-A full copy of my curriculum vitae is available as a [PDF download](files/Jee_CV.pdf).
+A full copy of my curriculum vitae is available as a [PDF download](/files/Jee_CV.pdf).
