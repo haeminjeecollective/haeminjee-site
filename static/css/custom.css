@@ -226,6 +226,8 @@ a:hover { color: var(--color-link-hover); }
 }
 
 .pub-list { margin-top: 0.5rem; }
+.pub-section { margin-bottom: 2.5rem; }
+.pub-section-title { font-size: 1.1rem; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 1px solid var(--color-border); padding-bottom: 0.4rem; margin-bottom: 1rem; margin-top: 0; }
 .pub-item {
   display: block; padding: 1rem 0;
   border-bottom: 1px solid var(--color-border);
