@@ -15,8 +15,10 @@
 
     <div class="pub-list">
       {{- $allPubs := (where .Site.RegularPages "Section" "publication") -}}
-      {{- $published := where $allPubs ".Params.status" "ne" "unpublished" -}}
+      {{- $notUnpublished := where $allPubs ".Params.status" "ne" "unpublished" -}}
+      {{- $published := where $notUnpublished ".Params.status" "ne" "public" -}}
       {{- $unpublished := where $allPubs ".Params.status" "unpublished" -}}
+      {{- $public := where $allPubs ".Params.status" "public" -}}
 
       <div class="pub-section" id="section-published">
         <h2 class="pub-section-title">Published Articles &amp; Book Chapters</h2>
@@ -61,6 +63,34 @@
           <div class="pub-item-meta">
             <span class="pub-item-authors">{{ delimit .Params.authors ", " }}</span>.
             {{ with .Params.publication }}<span class="pub-item-venue">{{ . | markdownify }}</span>.{{ end }}
+          </div>
+          {{ with .Params.links }}
+          <div class="pub-item-links">
+            {{ range . }}
+            <a class="pub-link" href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
+            {{ end }}
+          </div>
+          {{ end }}
+        </article>
+        {{ end }}
+      </div>
+
+      <div class="pub-section" id="section-public">
+        <h2 class="pub-section-title">Public-Facing Work</h2>
+        {{ range $public.ByDate.Reverse }}
+        {{ $types := .Params.publication_types | default (slice "") }}
+        {{ $tab := "other" }}
+        {{ range $types }}
+          {{ if eq . "journal_article" }}{{ $tab = "articles" }}{{ end }}
+          {{ if eq . "book" }}{{ $tab = "book" }}{{ end }}
+          {{ if eq . "book_chapter" }}{{ $tab = "chapters" }}{{ end }}
+        {{ end }}
+        <article class="pub-item" data-tab="{{ $tab }}" data-year="{{ .Date.Format "2006" }}" data-section="public">
+          <a class="pub-item-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <div class="pub-item-meta">
+            <span class="pub-item-authors">{{ delimit .Params.authors ", " }}</span>.
+            {{ with .Params.publication }}<span class="pub-item-venue">{{ . | markdownify }}</span>.{{ end }}
+            <span class="pub-item-year">{{ .Date.Format "2006" }}</span>.
           </div>
           {{ with .Params.links }}
           <div class="pub-item-links">
