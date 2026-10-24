@@ -37,12 +37,14 @@
             {{ with .Params.publication }}<span class="pub-item-venue">{{ . | markdownify }}</span>.{{ end }}
             <span class="pub-item-year">{{ .Date.Format "2006" }}</span>.
           </div>
-          {{ with .Params.links }}
-          <div class="pub-item-links">
-            {{ range . }}
+          <div class="pub-item-actions">
+            {{ with .Params.links }}{{ range . }}
             <a class="pub-link" href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
-            {{ end }}
+            {{ end }}{{ end }}
+            {{ with .Params.abstract }}<button class="pub-abstract-toggle" aria-expanded="false">Abstract</button>{{ end }}
           </div>
+          {{ with .Params.abstract }}
+          <div class="pub-abstract-body" hidden>{{ . }}</div>
           {{ end }}
         </article>
         {{ end }}
@@ -64,12 +66,14 @@
             <span class="pub-item-authors">{{ delimit .Params.authors ", " }}</span>.
             {{ with .Params.publication }}<span class="pub-item-venue">{{ . | markdownify }}</span>.{{ end }}
           </div>
-          {{ with .Params.links }}
-          <div class="pub-item-links">
-            {{ range . }}
+          <div class="pub-item-actions">
+            {{ with .Params.links }}{{ range . }}
             <a class="pub-link" href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
-            {{ end }}
+            {{ end }}{{ end }}
+            {{ with .Params.abstract }}<button class="pub-abstract-toggle" aria-expanded="false">Abstract</button>{{ end }}
           </div>
+          {{ with .Params.abstract }}
+          <div class="pub-abstract-body" hidden>{{ . }}</div>
           {{ end }}
         </article>
         {{ end }}
@@ -92,12 +96,14 @@
             {{ with .Params.publication }}<span class="pub-item-venue">{{ . | markdownify }}</span>.{{ end }}
             <span class="pub-item-year">{{ .Date.Format "2006" }}</span>.
           </div>
-          {{ with .Params.links }}
-          <div class="pub-item-links">
-            {{ range . }}
+          <div class="pub-item-actions">
+            {{ with .Params.links }}{{ range . }}
             <a class="pub-link" href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
-            {{ end }}
+            {{ end }}{{ end }}
+            {{ with .Params.abstract }}<button class="pub-abstract-toggle" aria-expanded="false">Abstract</button>{{ end }}
           </div>
+          {{ with .Params.abstract }}
+          <div class="pub-abstract-body" hidden>{{ . }}</div>
           {{ end }}
         </article>
         {{ end }}
@@ -145,6 +151,16 @@
 
   var hash = location.hash.replace('#', '');
   if (hash) filterByTab(hash);
+
+  document.querySelectorAll('.pub-abstract-toggle').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var body = this.closest('.pub-item').querySelector('.pub-abstract-body');
+      var open = body.hidden === false;
+      body.hidden = open;
+      this.setAttribute('aria-expanded', String(!open));
+      this.classList.toggle('active', !open);
+    });
+  });
 })();
 </script>
 {{ end }}
