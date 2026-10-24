@@ -93,8 +93,7 @@ a:hover { color: var(--color-link-hover); }
   gap: 3rem; align-items: start;
 }
 .hero-photo-img {
-  width: 200px; height: 200px; border-radius: 50%;
-  object-fit: cover; object-position: center top;
+  width: 220px; height: auto; border-radius: 8px;
   display: block;
 }
 .hero-text h1 {
