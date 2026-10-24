@@ -253,6 +253,8 @@ a:hover { color: var(--color-link-hover); }
   border: 1px solid var(--color-border); border-radius: 4px;
   color: var(--color-text-muted); background: var(--color-surface);
   cursor: pointer; transition: all 0.15s; font-family: inherit;
+  line-height: inherit; appearance: none; -webkit-appearance: none;
+  display: inline-block; vertical-align: baseline;
 }
 .pub-abstract-toggle:hover, .pub-abstract-toggle.active {
   border-color: var(--color-accent); color: var(--color-accent);
